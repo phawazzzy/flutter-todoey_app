@@ -44,7 +44,6 @@ class AddTask extends StatelessWidget {
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false).addTask(newTask);
                   Navigator.pop(context);
-
               },
               child: Text("Add", style: TextStyle(color: Colors.white),),
             ),
