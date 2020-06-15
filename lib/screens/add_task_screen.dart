@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/Task.dart';
+import 'package:todoey/models/task_data.dart';
 
 class AddTask extends StatelessWidget {
 
@@ -39,8 +42,8 @@ class AddTask extends StatelessWidget {
             FlatButton(
               color: Colors.lightBlueAccent,
               onPressed: () {
-//                print(newTask);
-                tasksCallback(newTask);
+                Provider.of<TaskData>(context, listen: false).updateTask(newTask);
+                  Navigator.pop(context);
 
               },
               child: Text("Add", style: TextStyle(color: Colors.white),),
