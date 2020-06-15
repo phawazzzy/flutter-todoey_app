@@ -42,7 +42,7 @@ class AddTask extends StatelessWidget {
             FlatButton(
               color: Colors.lightBlueAccent,
               onPressed: () {
-                Provider.of<TaskData>(context, listen: false).updateTask(newTask);
+                Provider.of<TaskData>(context, listen: false).addTask(newTask);
                   Navigator.pop(context);
 
               },

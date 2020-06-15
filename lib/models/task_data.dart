@@ -9,12 +9,18 @@ class TaskData extends ChangeNotifier {
     Task(name: "get to jendor")
   ];
 
+  //read _task only without able to modifying it
   UnmodifiableListView<Task> get tasks => UnmodifiableListView(_tasks);
 
 
-  void updateTask(String taskName) {
+  void addTask(String taskName) {
     final task = Task(name: taskName);
     _tasks.add(task);
+    notifyListeners();
+  }
+
+  void updateTask(Task task) {
+    task.toggleTask();
     notifyListeners();
   }
 }
