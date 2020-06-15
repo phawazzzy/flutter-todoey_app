@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/models/Task.dart';
 import 'package:todoey/models/task_data.dart';
+import 'package:toast/toast.dart';
+
 
 class AddTask extends StatelessWidget {
 
@@ -44,6 +46,8 @@ class AddTask extends StatelessWidget {
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false).addTask(newTask);
                   Navigator.pop(context);
+                Toast.show("New Task added", context,  gravity: Toast.BOTTOM, duration: 2, backgroundColor: Colors.green);
+
               },
               child: Text("Add", style: TextStyle(color: Colors.white),),
             ),
