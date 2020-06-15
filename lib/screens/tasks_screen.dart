@@ -5,7 +5,6 @@ import 'package:todoey/widgets/task_list.dart';
 import 'package:todoey/screens/add_task_screen.dart';
 
 class TaskScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +17,8 @@ class TaskScreen extends StatelessWidget {
             isScrollControlled: true,
             builder: (context) => SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTask(),
               ),
             ),
@@ -55,7 +55,7 @@ class TaskScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                   "${context.watch<TaskData>().tasks.length} Tasks",
+                    "${context.watch<TaskData>().tasks.length} Tasks",
                     style: TextStyle(fontSize: 18.0, color: Colors.white),
                   ),
                 ],
@@ -70,7 +70,17 @@ class TaskScreen extends StatelessWidget {
                   topLeft: Radius.circular(20.0),
                 ),
               ),
-              child: TaskList(),
+              child: context.watch<TaskData>().tasks.length == 0
+                  ? Center(
+                      child: Text(
+                        "start by adding new Task",
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.lightBlueAccent,
+                        ),
+                      ),
+                    )
+                  : TaskList(),
             ),
           ),
         ],
